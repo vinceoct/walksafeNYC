@@ -10,6 +10,7 @@ h3 {
   padding: 5px;
   border-radius: 10px;
   font-size: 40px;
+  
 }
 
 h4 {
@@ -24,13 +25,5 @@ img {
   margin-top: 200px;
 }
 
-.App {
-  position: relative;
-}
 
-.app-footer {
-  position: absolute;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
 
