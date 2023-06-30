@@ -5,7 +5,12 @@ import Main from './Main'
 const Login = () => {
     return (
         <div className="login-page">
-            <h4>This is the login page</h4>
+            <form>
+                <label for="email">email</label>
+                <input name="email" id="email" type="email" placeholder="youremail@gmail.com"/>
+                <label for="password">password</label>
+                <input name="password" id="password" type="password" placeholder="*******"/>
+            </form>
             <Link class="createAccount" to="/createAnAccount">Create An Account</Link>
         </div>
     )
