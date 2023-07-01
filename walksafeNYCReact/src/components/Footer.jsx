@@ -1,9 +1,9 @@
-import skyline from '../assets/skyline.png'
+import city from '../assets/city.png'
 
 const Footer = () => {
     return (
         <footer className="app-footer">
-            <img src={skyline}/>
+            <img src={city}/>
         </footer>
     )
 }
