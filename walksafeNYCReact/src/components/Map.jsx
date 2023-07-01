@@ -1,37 +1,37 @@
 import mapboxgl from 'mapbox-gl'
-import React, { useEffect, useState } from 'react'
-import ReactMapGL from 'react-map-gl'
+import 'mapbox-gl/dist/mapbox-gl.css'
+import React, { useEffect, useRef } from 'react'
+
 
 const Map = () => {
-    const mapboxToken = import.meta.env.VITE_MAPBOXTOKEN
-    const [viewport, setViewport] = useState({
-        width: '30%',
-        height: '30%',
-        latitude: 40.7,
-        longitude: -73.9,  
-        zoom: 9,
-})
-console.log(mapboxToken)
+    const mapContainerRef = useRef(null)
+    
 useEffect(() => { 
+    mapboxgl.accessToken = import.meta.env.VITE_MAPBOXTOKEN
     const map = new mapboxgl.Map({
-        container: 'mapContainer',
+        container: mapContainerRef.current,
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [viewport.longitude, viewport.latitude],
-        zoom: viewport.zoom,
-        accessToken: `${mapboxToken}`
-
-
+        center: [-73.9, 40.7,],
+        zoom: 9,
+        
     })
-    return () => map.remove()
+    
+    // const resizeMap = () => {
+    //     map.resize()
+    // }
+
+    // window.addEventListener('resize', resizeMap)
+
+    // return () => {
+    //  window.removeEventListener('resize', resizeMap)
+    //  map.remove()
+    // }
 }, [])
 
-
-
-
     return (
-        <div id='mapContainer'>
-            <ReactMapGL />
-        </div>
+    <div className='mappo'>
+        <div className='map' ref={mapContainerRef} id='mapContainer'/>
+    </div>
     )
 }
 
