@@ -16,7 +16,20 @@ const ReportForm = () => {
         console.log(comment)
         console.log(currentLocation)
     }
-
+    // pulls location data from user device when use current location button is clicked. 
+    const handleGeolocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude
+                    const longitude = position.coords.longitude
+                    setCurrentLocation(`Latitude: ${latitude}, Longitude: ${longitude}`)
+                })
+                
+        } else {
+            console.log('geolocation is not supported by this browse.')
+        }
+    }
     return (
         <div className="report-form-page">
             <h4>Report an incident of street harrassment:</h4>
@@ -140,7 +153,7 @@ const ReportForm = () => {
                 </div>
                 <div className="question">
                     <label htmlFor="currentLocation">Location: </label>
-                    <button id="currentLocation" onClick={()=>setCurrentLocation("insert current location here")}>Use Current Location</button>
+                    <button id="currentLocation" onClick={handleGeolocation}>Use Current Location</button>
                 </div>
                 <button className="submit-button" type="submit">Submit Report</button>
             </form>
