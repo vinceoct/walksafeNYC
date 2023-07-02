@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import heatmap from 'heatmap.js'
 import React, { useEffect, useRef } from 'react'
 
 
@@ -13,19 +14,20 @@ useEffect(() => {
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [-73.9, 40.7,],
         zoom: 9,
-        
-    })
-    
-    // const resizeMap = () => {
-    //     map.resize()
-    // }
-
-    // window.addEventListener('resize', resizeMap)
-
-    // return () => {
-    //  window.removeEventListener('resize', resizeMap)
-    //  map.remove()
-    // }
+   
+    }) 
+    // const data = [...]
+    //  const heat = heatmap.create({
+    //     container: mapContainerRef.current,
+    //     radius: 15 
+    // })
+    // data.forEach((point) => {
+    //     heat.addData({
+    //         x: point.longitude,
+    //         y: point.latitude
+    //     })
+    // })
+  
 }, [])
 
     return (
