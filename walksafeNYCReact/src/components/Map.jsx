@@ -13,7 +13,7 @@ useEffect(() => {
         container: mapContainerRef.current,
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [-73.9, 40.7,],
-        zoom: 9,
+        zoom: 9.4,
    
     }) 
     // const data = [...]
