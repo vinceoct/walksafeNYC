@@ -13,14 +13,19 @@ const Login = () => {
 
     return (
         <div className="login-page">
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} name="email" id="email" type="email" placeholder="youremail@gmail.com"/>
-                <label htmlFor="password">password</label>
-                <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="*******"/>
-                <button type="submit">Log in</button>
+            <h4>Login to your account.</h4>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <div className="login-question">
+                    <label htmlFor="email">email</label>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} name="email" id="email" type="email" placeholder="youremail@gmail.com"/>
+                </div>
+                <div className="login-question">
+                    <label htmlFor="password">password</label>
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="*******"/>
+                </div>
+                <button id="log-in-button" className="submit-button" type="submit">Log in</button>
+                <Link class="createAccount" to="/createAnAccount"><button id="create-account" className="submit-button">Create An Account</button></Link>
             </form>
-            <Link class="createAccount" to="/createAnAccount"><button>Create An Account</button></Link>
         </div>
     )
 }
