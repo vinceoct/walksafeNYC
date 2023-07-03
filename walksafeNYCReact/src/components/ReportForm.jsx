@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import city from '../assets/city.png'
 const ReportForm = () => {
 
     const [date, setDate] = useState('')
@@ -32,8 +32,9 @@ const ReportForm = () => {
     }
     return (
         <div className="report-form-page">
-            <h4>Report an incident of street harrassment:</h4>
+            
             <form className="report-form" onSubmit={handleSubmit}>
+                <h4>Report an incident of street harrassment:</h4>
                 <div className="question">
                     <label htmlFor="date">Date of Incident: </label>
                     <input type="date" onChange={(e)=>setDate(e.target.value)} id="date"></input>
@@ -156,7 +157,9 @@ const ReportForm = () => {
                     <button id="currentLocation" onClick={handleGeolocation}>Use Current Location</button>
                 </div>
                 <button className="submit-button" type="submit">Submit Report</button>
+                <img src={city}/>
             </form>
+            
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
+import city from '../assets/city.png'
 
 
 const Login = () => {
@@ -13,8 +14,8 @@ const Login = () => {
 
     return (
         <div className="login-page">
-            <h4>Login to your account.</h4>
             <form className="login-form" onSubmit={handleSubmit}>
+                <h4>Login to your account.</h4>
                 <div className="login-question">
                     <label htmlFor="email">email</label>
                     <input value={email} onChange={(e) => setEmail(e.target.value)} name="email" id="email" type="email" placeholder="youremail@gmail.com"/>
@@ -25,6 +26,7 @@ const Login = () => {
                 </div>
                 <button id="log-in-button" className="submit-button" type="submit">Log in</button>
                 <Link class="createAccount" to="/createAnAccount"><button id="create-account" className="submit-button">Create An Account</button></Link>
+            <img src={city}/>
             </form>
         </div>
     )
