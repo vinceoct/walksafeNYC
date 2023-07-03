@@ -3,7 +3,7 @@ import city from '../assets/city.png'
 const Footer = () => {
     return (
         <footer className="app-footer">
-            <img src={city}/>
+            <h4>Report street harassment and help keep others safe.</h4>
         </footer>
     )
 }

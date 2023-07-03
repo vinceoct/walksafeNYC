@@ -11,10 +11,9 @@ useEffect(() => {
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOXTOKEN
     const map = new mapboxgl.Map({
         container: mapContainerRef.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
+        style: 'mapbox://styles/mapbox/dark-v11',
         center: [-73.9, 40.7,],
         zoom: 9.4,
-   
     }) 
     // const data = [...]
     //  const heat = heatmap.create({
@@ -32,7 +31,7 @@ useEffect(() => {
 
     return (
     <div className='mappo'>
-        <div className='map' ref={mapContainerRef} id='mapContainer'/>
+        <div className='map' ref={mapContainerRef} />
     </div>
     )
 }
