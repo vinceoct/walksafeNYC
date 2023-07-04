@@ -14,20 +14,22 @@ const Login = () => {
 
     return (
         <div className="login-page">
+            <div className='form-container'>
             <form className="login-form" onSubmit={handleSubmit}>
                 <h4>Login to your account.</h4>
                 <div className="login-question">
-                    <label htmlFor="email">email</label>
+                    <label htmlFor="email">Email:</label>
                     <input value={email} onChange={(e) => setEmail(e.target.value)} name="email" id="email" type="email" placeholder="youremail@gmail.com"/>
                 </div>
                 <div className="login-question">
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">Password:</label>
                     <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="*******"/>
                 </div>
                 <button id="log-in-button" className="submit-button" type="submit">Log in</button>
                 <Link class="createAccount" to="/createAnAccount"><button id="create-account" className="submit-button">Create An Account</button></Link>
-            <img src={city}/>
             </form>
+            <img src={city}/>
+            </div>
         </div>
     )
 }

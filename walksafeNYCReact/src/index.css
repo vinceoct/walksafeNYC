@@ -1,10 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=BenchNine:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arsenal:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arimo:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 
 #root {
   position: absolute;
@@ -17,11 +12,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: linear-gradient(rgba(10, 87, 120, 1), rgba(175, 64, 177, 1), rgba(255, 153, 233, 1)); */
   background-color: #00b3ff;
   background-repeat: round;
 }
-
 
 body {
   margin: 0;
@@ -37,7 +30,6 @@ body {
   min-height: 100vh;
   color: #fff;
   font-family: unica one;
-
 }
 
 .App {
@@ -91,14 +83,13 @@ a {
 }
 
 .nav:hover {
-  color: #aa0486;
+  color: #fdaeec;
   border-radius: 8px;
   font-weight: bold;
   text-shadow: none; 
-  background: linear-gradient(315deg, #00a1e6, #00c0ff);
-  box-shadow: -5px -5px 29px #0088c2,
-               5px 5px 29px #00deff;
-
+  background: linear-gradient(135deg, #00a1e6, #00c0ff);
+  box-shadow: 5px 5px 20px #0088c2,
+             -5px -5px 20px #00deff;
 }
 
 h3 {
@@ -108,9 +99,9 @@ h3 {
   font-size: 40px;
   font-family: unica one;
   border-radius: 10px;
-  background: linear-gradient(315deg, #00a1e6, #00c0ff);
-  box-shadow: -5px -5px 29px #0088c2,
-               5px 5px 29px #00deff;
+  background: linear-gradient(135deg, #00a1e6, #00c0ff);
+  box-shadow: 5px 5px 20px #00a1e6,
+             -5px -5px 20px #00c0ff;
 }
 
 h4 {
@@ -121,26 +112,20 @@ h4 {
   padding: 6.25px 0px 6.25px 0px;
   font-size: min(5.75vw, 21px);
   font-family: pathway gothic one;
-  font-weight: lighter;
-  text-shadow: -1px -1px 10px #00daff,
+  text-shadow: -1px -1px 10px #00a1e6,
     1px 1px 10px #002f43;
 }
 
 img {
-  position: relative;
+  position: absolute;
   bottom: 0px;
-  margin-bottom: -65px;
-  margin-top: 20px;
+  margin-bottom: -5px;
   width:100%;
-  
-}
+  z-index:-1
+  }
 
-.login-form img{
-  
-  margin-bottom: -135px ;
-}
 
-.homePage, .report-form-page, .login-page {
+.homePage, .report-form-page, .login-page, .create-account-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,9 +140,9 @@ img {
   overflow: hidden;
   border-radius: 10px;
   margin-top: 40px;
-  background: linear-gradient(315deg, #00a1e6, #00c0ff);
-  box-shadow: -5px -5px 29px #0088c2,
-               5px 5px 29px #00deff;
+  background: linear-gradient(135deg, #00a1e6, #00c0ff);
+  box-shadow: 5px 5px 20px #00a1e6,
+             -5px -5px 20px #00c0ff;
 }
 
 .map.mapboxgl-map {
@@ -169,7 +154,31 @@ img {
 .report-form,
 .login-form,
 .report-info,
-.create-account-form {
+.create-account-form{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+}
+
+.report-form{
+  margin-top: -148px;
+}
+
+.login-form{
+  margin-top: -190px;
+  
+}
+.create-account-form{
+  margin-top: -100px;
+}
+
+
+
+.form-container {
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -179,9 +188,9 @@ img {
   width: 80%;
   height: 500px;
   margin-top: 40px;
-  background: linear-gradient(315deg, #00a1e6, #00c0ff);
-  box-shadow: -5px -5px 29px #0088c2,
-               5px 5px 29px #00deff;
+  background: linear-gradient(135deg, #00a1e6, #00c0ff);
+  box-shadow: 5px 5px 20px #00a1e6,
+             -5px -5px 20px #00c0ff;
 }
 
 .question,
@@ -190,70 +199,96 @@ img {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+  justify-content: space-between;
+  width: 100%
 }
 
-.submit-button {
+#comment, #incidentType, #currentLocation, #time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender {
+  width: 65.6%;
+  border: none;
+  font-family: pathway gothic one;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 4px 4px 10px #00a1e6,
+             -4px -4px 10px #00c0ff;
+  text-align: center;
+  color: #1e1e1e
+}
+
+#comment, #password, #email, #firstName, #lastName, #gender {
+  text-align: left;
+  padding: 0px 0px 5px 0px;
+  background: #e6e6e6;
+  box-shadow: inset 6px 6px 10px #b4b4b4,
+              inset -6px -6px 10px #ffffff;
+}
+
+#incidentType, #time { 
+  border-radius: 5px
+}
+
+button {
+  color: #1e1e1e;
   width: 110px;
   height: 25px;
   border-radius: 5px;
+  border: none;
   padding: 3px;
+  font-family: unica one;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  /* box-shadow: 5px 5px 20px #00a1e6,
+             -5px -5px 20px #00c0ff; */
 }
 
-.submit-button:hover {
-  background-color: black;
-  color: white;
+button:hover, #currentLocation:hover,
+#incidentType:hover,
+#time:hover,
+#date:hover, #dateOfBirth:hover{
+  background: linear-gradient(145deg, #e49dd4, #ffbafd);
+  box-shadow: 6px 6px 10px #00a1e6,
+             -6px -6px 10px #00c0ff;
   cursor: pointer;
+}
+
+#comment:hover, #email:hover,
+#password:hover, #gender:hover, #firstName:hover, #lastName:hover {
+  background: #fdaeec;
+  box-shadow: inset 11px 11px 22px #c788b9,
+    inset -11px -11px 22px #ffbcff;
 }
 
 input,
 textarea {
   border-radius: 5px;
+  font-family: pathway gothic one;
 }
 
 label {
   margin-right: 10px;
-  color: black;
-}
-
-#create-account {
-  width: 150px;
-}
-
-
-#log-in-button,
-#create-account-button {
-  margin-right: 0;
-  margin-left: 5px;
-}
-
-#create-account {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.createAccount {
-  margin-right: 300px;
-}
-
-.login-question,
-.account-question {
-  margin-left: 5px;
+  color: white;
+  font-family: pathway gothic one;
+  text-shadow: -1px -1px 10px #00a1e6,
+                1px 1px 10px #002f43;
 }
 
 p {
-  color: black;
+  color: #1e1e1e;
 }
 
 .report-info {
   text-align: left;
 }
 
-#already-have-account {
-  width: 250px;
-  margin-right: 160px;
+.submit-button{
+  margin-top: 4px;
+  width: 85%
 }
 
-.question{
-  width: 95%;
-  border-radius: 10px;
+#already-have-account, #create-account{
+  width: 100%
+}
+
+.createAccount, .login{
+  width: 85%;
+  padding: 0px;
+  margin-top: 4px
 }

@@ -32,7 +32,7 @@ const ReportForm = () => {
     }
     return (
         <div className="report-form-page">
-            
+            <div className="form-container">
             <form className="report-form" onSubmit={handleSubmit}>
                 <h4>Report an incident of street harrassment:</h4>
                 <div className="question">
@@ -157,9 +157,10 @@ const ReportForm = () => {
                     <button id="currentLocation" onClick={handleGeolocation}>Use Current Location</button>
                 </div>
                 <button className="submit-button" type="submit">Submit Report</button>
-                <img src={city}/>
+                
             </form>
-            
+            <img src={city}/>
+           </div> 
         </div>
     )
 }
