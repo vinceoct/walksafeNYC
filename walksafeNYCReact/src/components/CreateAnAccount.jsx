@@ -69,7 +69,7 @@ const CreateAnAccount = () => {
                     <input value={passwordInput} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="*******"/>
                 </div>
                 <button id="create-account-button" className="submit-button" type="submit">Create Account</button>
-                <Link class="login" to="/login"><button id="already-have-account" className="submit-button">Already have an account? Log in here.</button></Link>
+                <Link className="login" to="/login"><button id="already-have-account" className="submit-button">Already have an account? Log in here.</button></Link>
             </form>
             <img src={city}/>
             </div>
