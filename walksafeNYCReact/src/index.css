@@ -74,6 +74,7 @@ body {
   font-size: 24px;
   text-shadow: -1px -1px 10px #00daff,
     1px 1px 10px #002f43;
+  /* transition: color 300ms ease, box-shadow 500ms ease; */
 }
 
 a {
@@ -88,9 +89,23 @@ a {
   font-weight: bold;
   text-shadow: none; 
   background: linear-gradient(135deg, #00a1e6, #00c0ff);
-  box-shadow: 5px 5px 20px #0088c2,
-             -5px -5px 20px #00deff;
+  box-shadow: 5px 5px 20px #00a1e6,
+             -5px -5px 20px #00c0ff;
+  transition: box-shadow 500ms ease;
 }
+
+.wlksf{
+  background: linear-gradient(90deg, #00a1e6, #00c0ff);
+  background-position: center;
+  color: #fff;
+  transition: color 500ms ease
+}
+
+.wlksf:hover{
+  color:#fdaeec;
+  transition: color 500ms ease;
+}
+
 
 h3 {
   margin-top: 30px;
@@ -99,7 +114,7 @@ h3 {
   font-size: 40px;
   font-family: unica one;
   border-radius: 10px;
-  background: linear-gradient(135deg, #00a1e6, #00c0ff);
+  background: linear-gradient(90deg, #00a1e6, #00c0ff);
   box-shadow: 5px 5px 20px #00a1e6,
              -5px -5px 20px #00c0ff;
 }
@@ -113,7 +128,7 @@ h4 {
   font-size: min(5.75vw, 21px);
   font-family: pathway gothic one;
   text-shadow: -1px -1px 10px #00a1e6,
-    1px 1px 10px #002f43;
+                1px 1px 10px #002f43;
 }
 
 img {
@@ -235,8 +250,6 @@ button {
   padding: 3px;
   font-family: unica one;
   background: linear-gradient(145deg, #e6e6e6, #ffffff);
-  /* box-shadow: 5px 5px 20px #00a1e6,
-             -5px -5px 20px #00c0ff; */
 }
 
 button:hover, #currentLocation:hover,
@@ -244,8 +257,6 @@ button:hover, #currentLocation:hover,
 #time:hover,
 #date:hover, #dateOfBirth:hover{
   background: linear-gradient(145deg, #e49dd4, #ffbafd);
-  box-shadow: 6px 6px 10px #00a1e6,
-             -6px -6px 10px #00c0ff;
   cursor: pointer;
 }
 
