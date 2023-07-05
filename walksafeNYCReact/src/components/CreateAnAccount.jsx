@@ -1,19 +1,40 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import city from '../assets/city.png'
+import axios from 'axios'
+
+
 
 
 const CreateAnAccount = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [emailInput, setEmail] = useState('')
+    const [passwordInput, setPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [dateOfBirth, setDateOfBirth] = useState('')
-    const [gender, setGender] = useState('')
+    const [genderInput, setGender] = useState('')
+
+    const getUsers = async () => {
+        const response = await axios.post(`https://walksafenyc-api-production.up.railway.app/api/users`, {
+           first_name: firstName,
+           last_name: lastName,
+           email: emailInput,
+           password: passwordInput,
+           date_of_birth: dateOfBirth,
+           gender: genderInput 
+        })
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(email)
+        getUsers()
     }
 
 
@@ -37,15 +58,15 @@ const CreateAnAccount = () => {
                 </div>
                 <div className="account-question">
                     <label htmlFor="gender">Gender:</label>
-                    <input onChange={(e)=>setGender(e.target.value)}type="text" placeholder="gender" value={gender} name="gender" id="gender"/>
+                    <input onChange={(e)=>setGender(e.target.value)}type="text" placeholder="gender" value={genderInput} name="gender" id="gender"/>
                 </div>
                 <div className="account-question">
                     <label htmlFor="email">Email:</label>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} name="email" id="email" type="email" placeholder="youremail@gmail.com"/>
+                    <input value={emailInput} onChange={(e) => setEmail(e.target.value)} name="email" id="email" type="email" placeholder="youremail@gmail.com"/>
                 </div>
                 <div className="account-question">
                     <label htmlFor="password">Password:</label>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="*******"/>
+                    <input value={passwordInput} onChange={(e) => setPassword(e.target.value)} name="password" id="password" type="password" placeholder="*******"/>
                 </div>
                 <button id="create-account-button" className="submit-button" type="submit">Create Account</button>
                 <Link class="login" to="/login"><button id="already-have-account" className="submit-button">Already have an account? Log in here.</button></Link>
@@ -55,5 +76,12 @@ const CreateAnAccount = () => {
         </div>
     )
 }
+
+const printUsers = async () => {
+    const response = await axios.get(`https://walksafenyc-api-production.up.railway.app/api/users`)
+    console.log(response)
+}
+
+printUsers()
 
 export default CreateAnAccount
