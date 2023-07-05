@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import city from '../assets/city.png'
+import axios from 'axios'
+
+const getUsers = async () => {
+    const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/users`)
+    console.log(response.data.results)
+}
+
+getUsers()
 
 
 const CreateAnAccount = () => {
