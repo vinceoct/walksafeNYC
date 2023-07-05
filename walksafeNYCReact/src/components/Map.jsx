@@ -14,19 +14,7 @@ useEffect(() => {
         style: 'mapbox://styles/mapbox/light-v11',
         center: [-73.9, 40.7,],
         zoom: 9.4,
-    }) 
-    // const data = [...]
-    //  const heat = heatmap.create({
-    //     container: mapContainerRef.current,
-    //     radius: 15 
-    // })
-    // data.forEach((point) => {
-    //     heat.addData({
-    //         x: point.longitude,
-    //         y: point.latitude
-    //     })
-    // })
-  
+    })    
 }, [])
 
     return (

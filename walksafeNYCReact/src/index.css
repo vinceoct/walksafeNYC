@@ -88,9 +88,26 @@ a {
   font-weight: bold;
   text-shadow: none; 
   background: linear-gradient(135deg, #00a1e6, #00c0ff);
-  box-shadow: 5px 5px 20px #0088c2,
-             -5px -5px 20px #00deff;
+  box-shadow: 5px 5px 20px #00a1e6,
+             -5px -5px 20px #00c0ff;
 }
+
+.wlksf{
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 25%, rgba(199, 136, 185, 1) 37%, rgba(241, 169, 229, 1) 50%, rgba(255, 188, 255, 1) 62%, rgba(255, 255, 255, 1) 75%);
+  background-position: right center;
+  background-size: 400% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: color 200ms linear
+}
+
+.wlksf:hover{
+  background-position: left center;
+  transition: background-position 2000ms ease-out;
+}
+
 
 h3 {
   margin-top: 30px;
@@ -113,7 +130,7 @@ h4 {
   font-size: min(5.75vw, 21px);
   font-family: pathway gothic one;
   text-shadow: -1px -1px 10px #00a1e6,
-    1px 1px 10px #002f43;
+                1px 1px 10px #002f43;
 }
 
 img {
@@ -244,8 +261,6 @@ button:hover, #currentLocation:hover,
 #time:hover,
 #date:hover, #dateOfBirth:hover{
   background: linear-gradient(145deg, #e49dd4, #ffbafd);
-  box-shadow: 6px 6px 10px #00a1e6,
-             -6px -6px 10px #00c0ff;
   cursor: pointer;
 }
 
