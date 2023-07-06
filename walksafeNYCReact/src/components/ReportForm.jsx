@@ -1,35 +1,70 @@
 import React, { useState } from 'react'
 import city from '../assets/city.png'
+import axios from 'axios'
 const ReportForm = () => {
 
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [incidentType, setIncidentType] = useState('')
     const [comment, setComment] = useState('')
-    const [currentLocation, setCurrentLocation] = useState('')
+    const [longitude, setLongitude] = useState('')
+    const [latitude, setLatitude] = useState('')
+    const [address, setAddress] = useState('')
+    const [LocationLoading, setLocationLoading] = useState(false)
+
+    const newReport = async () => {
+        const response = await axios.post(`http://localhost:3001/api/posts`, {
+        lat: latitude,
+        lon: longitude,
+        post_date: date,
+        post_time: time,
+        user_account: null,
+        incident_type: incidentType,
+        comment: comment   
+        })
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(date)
+        newReport()
         console.log(time)
-        console.log(incidentType)
-        console.log(comment)
-        console.log(currentLocation)
+        
     }
+
     // pulls location data from user device when use current location button is clicked. 
-    const handleGeolocation = () => {
+    const handleGeolocation = (e) => {
+        e.preventDefault()
         if (navigator.geolocation) {
+            setLocationLoading(true)
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const latitude = position.coords.latitude
-                    const longitude = position.coords.longitude
-                    setCurrentLocation(`Latitude: ${latitude}, Longitude: ${longitude}`)
+                    let latitude = position.coords.latitude
+                    let longitude = position.coords.longitude
+                    setLongitude(longitude)
+                    setLatitude(latitude)
+                    setLocationLoading(false)
+                },
+                (error) => {
+                    console.log('error', error)
+                    setLocationLoading(false)
                 })
                 
         } else {
             console.log('geolocation is not supported by this browse.')
         }
     }
+
+    const handleAddress = (e) => {
+        e.preventDefault()
+        
+    }
+
     return (
         <div className="report-form-page">
             <div className="form-container">
@@ -154,9 +189,17 @@ const ReportForm = () => {
                 </div>
                 <div className="question">
                     <label htmlFor="currentLocation">Location: </label>
-                    <button id="currentLocation" onClick={handleGeolocation}>Use Current Location</button>
+                    {LocationLoading ? ( <button id="loadinglocation">Getting Location</button>
+                    ) : (
+                        latitude !== '' ? (
+                            <button id="havelocation">Received</button>
+                        ) : (
+                     <button id="currentLocation" type='button' onClick={handleGeolocation}>Use Location</button>))} 
+                     <p id='or'>OR</p>
+                    <textarea id='address' onChange={(e)=>setAddress(e.target.value)} placeholder='Enter address'></textarea>
                 </div>
-                <button className="submit-button" type="submit">Submit Report</button>
+                
+                 <button className="submit-button" type="submit">Submit Report</button>
                 
             </form>
             <img src={city}/>
