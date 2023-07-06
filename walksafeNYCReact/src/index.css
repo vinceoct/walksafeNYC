@@ -218,7 +218,7 @@ img {
   width: 100%
 }
 
-#comment, #incidentType, #currentLocation, #time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender {
+#comment, #incidentType, #havelocation, #currentLocation, #loadinglocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender, #address {
   width: 65.6%;
   border: none;
   font-family: pathway gothic one;
@@ -228,8 +228,11 @@ img {
   text-align: center;
   color: #1e1e1e
 }
+#havelocation{
+  background: linear-gradient(145deg, #e49dd4, #ffbafd);
+}
 
-#comment, #password, #email, #firstName, #lastName, #gender {
+#comment, #password, #email, #firstName, #lastName, #gender, #address{
   text-align: left;
   padding: 0px 0px 5px 0px;
   background: #e6e6e6;
@@ -260,13 +263,52 @@ button:hover, #currentLocation:hover,
   cursor: pointer;
 }
 
+#havelocation:hover{
+  cursor: none;
+}
+
 #comment:hover, #email:hover,
-#password:hover, #gender:hover, #firstName:hover, #lastName:hover {
+#password:hover, #gender:hover, #firstName:hover, #lastName:hover, #address:hover{
   background: #fdaeec;
   box-shadow: inset 11px 11px 22px #c788b9,
     inset -11px -11px 22px #ffbcff;
 }
 
+#loadinglocation {
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 25%, rgba(199, 136, 185, 1) 37%, rgba(241, 169, 229, 1) 50%, rgba(255, 188, 255, 1) 62%, rgba(255, 255, 255, 1) 75%);
+  background-position: right center;
+  background-size: 400% auto; 
+  animation-name: loadingani;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loadingani {
+  0%{background-position: right center}
+  100%{background-position: left center}
+}
+
+#currentLocation, #havelocation, #loadinglocation{
+  width: 27.5%;
+  margin-right: -5%;
+  height: 34px
+}
+#or{
+  font-family: pathway gothic one;
+  width: 5%;
+  margin-left: -6.5%;
+  margin-top: 6px;
+  margin-bottom: 0;
+  font-family: pathway gothic one;
+  text-shadow: -1px -1px 10px #00a1e6,
+                1px 1px 10px #002f43;
+}
+#address{
+  width:27.5%;
+  margin-left: -10.5%;
+  height: 30px 
+}
 input,
 textarea {
   border-radius: 5px;
@@ -281,15 +323,13 @@ label {
                 1px 1px 10px #002f43;
 }
 
-p {
-  color: #1e1e1e;
-}
+
 
 .report-info {
   text-align: left;
 }
 
-.submit-button{
+.submit-button {
   margin-top: 4px;
   width: 85%
 }
