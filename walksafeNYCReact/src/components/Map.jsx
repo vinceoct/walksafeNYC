@@ -25,9 +25,11 @@ const Map =() => {
         const lon = entry.lon
         const lat = entry.lat
         const type = entry.incident_type
+        const time = entry.post_time
+        const date = entry.post_date
         const marker = new mapboxgl.Marker({color: '#fdaeec'})
         .setLngLat([lon, lat])
-        .setPopup(new mapboxgl.Popup({className: 'popup'}).setHTML(`<h2>${type}</h2>`))
+        .setPopup(new mapboxgl.Popup({className: 'popup'}).setHTML(`<h2>Report of ${type} at ${time} on ${date}</h2>`))
         .addTo(map)
         
     })

@@ -27,8 +27,8 @@ const ReportPage = () => {
     return (
         <div className="reportPage">
             <div className='form-container'>
+            <div className='reportcont'>
             <h4>Incident Report</h4>
-            <div className="report-info">
                 <p>Date of Incident: {report.post_date}</p>
                 <p>Time of Incident: {report.post_time}</p>
                 <p>Incident Type: {report.incident_type}</p>
