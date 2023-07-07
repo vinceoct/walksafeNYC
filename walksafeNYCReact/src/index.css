@@ -107,8 +107,10 @@ a {
 }
 
 h2{
-  color: #1e1e1e;
+  color: #ffffff;
   font-family: pathway gothic one;
+  text-shadow: -1px -1px 10px #00a1e6,
+      1px 1px 10px #00c0ff;
 }
 
 h3 {
@@ -164,8 +166,29 @@ img {
              -5px -5px 20px #00c0ff;
 }
 .popup button{
-  width: 5%
+  width: 10%;
+  padding: 0;
+  margin-top: -6px;
   
+  background: transparent;
+  top: 0;
+  right: 0;
+  font-size: 23px;
+  color:#fdaeec;
+  font-family: pathway gothic one;
+}
+.popup button:hover{
+  background: transparent;
+  color:#e6e6e6;
+}
+.mapboxgl-popup-tip{
+  opacity: 0;
+}
+.mapboxgl-popup-content{
+  background: linear-gradient(135deg, #00a1e6, #00c0ff) !important;
+  border-radius: 10px !important;
+  box-shadow: 6px 6px 20px #b4b4b4,
+       -6px -6px 10px #ffffff !important;
 }
 
 .map.mapboxgl-map {
@@ -396,27 +419,38 @@ label {
 }
 
 .reports{
-  border: solid 2px white;
+  font-family: pathway gothic one;
   border-radius: 5px;
   width: 400px;
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: left;
   padding-left: 10px;
+  background: linear-gradient(135deg, #00a1e6, #00c0ff);
+  box-shadow: 1px 1px 5px #00a1e6,
+            -1px -1px 5px #00c0ff;
 }
 
 .reports:hover {
   cursor: pointer;
-  color:rgba(199, 136, 185, 1);
-  border-color:rgba(199, 136, 185, 1); 
+  color:#fdaeec;
 }
 
 .report-grid{
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
+  width: 65%
+}
+.report-grid::-webkit-scrollbar {
+  width: 10px; 
+}
+.report-grid::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
 }
 
-/* .report-info {
-  margin-top: 100px;
-} */
+.report-grid::-webkit-scrollbar-thumb:hover {
+  background: #fdaeec;
+}
