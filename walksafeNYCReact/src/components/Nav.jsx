@@ -22,6 +22,7 @@ const Nav = () => {
                 <Link className="nav" to="/reportForm">Submit a Report</Link>
                 <Link className="nav" to="/login/:id">Account</Link>
                 <Link className="nav" to="/reports">View all reports</Link>
+                <Link className="nav" to="/userReports/:id">My reports</Link>
             </div>
         )
     }
