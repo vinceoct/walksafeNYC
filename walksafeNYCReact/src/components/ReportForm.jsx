@@ -1,38 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import city from '../assets/city.png'
+import { AuthContext } from '../context/AuthProvider'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 const ReportForm = () => {
 
+    const { loggedIn, user } = useContext(AuthContext)
+
+    console.log(user)
+
+    if (!loggedIn || !user) {
+        return null
+    }
+
     const [date, setDate] = useState('')
-    const [time, setTime] = useState('12:00 AM')
-    const [incidentType, setIncidentType] = useState('Verbal Harassment')
+    const [time, setTime] = useState('')
+    const [incidentType, setIncidentType] = useState('')
     const [comment, setComment] = useState('')
     const [longitude, setLongitude] = useState('')
     const [latitude, setLatitude] = useState('')
     const [address, setAddress] = useState('')
     const [LocationLoading, setLocationLoading] = useState(false)
+    const [success, setSuccess] = useState(false)
 
-    const newReport = async (latitude, longitude) => {
-        const response = await axios.post(`http://localhost:3001/api/posts`, {
-        lat: latitude,
-        lon: longitude,
-        post_date: date,
-        post_time: time,
-        user_account: null,
-        incident_type: incidentType,
-        comment: comment   
-        })
-        .then(function (response) {
-            console.log(response.data)
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
-    }
+    
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setSuccess(true)
         if (address != '') {
         geocode(address)
         } else if (latitude != '' && address === ''){
@@ -77,8 +73,34 @@ const ReportForm = () => {
             }
         }
 
+        const newReport = async (latitude, longitude) => {
+            const response = await axios.post(`https://walksafenyc-api-production.up.railway.app/api/posts`, {
+            lat: latitude,
+            lon: longitude,
+            post_date: date,
+            post_time: time,
+            user_account: user._id,
+            incident_type: incidentType,
+            comment: comment   
+            })
+            .then(function (response) {
+                console.log(response.data)
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+        }
+
     return (
         <div className="report-form-page">
+              {success ? (
+                <section>
+                    <h1>Report successfully created.</h1>
+                    <p>
+                    <Link className="home" to="/"><button id="home" className="submit-button">Go home.</button></Link> 
+                    </p>
+                </section>
+            ) : (
             <div className="form-container">
             <form className="report-form" onSubmit={handleSubmit}>
                 <h4>Report an incident of street harrassment:</h4>
@@ -217,7 +239,9 @@ const ReportForm = () => {
             </form>
             <img src={city}/>
            </div> 
+        )}
         </div>
+        
     )
 }
 
