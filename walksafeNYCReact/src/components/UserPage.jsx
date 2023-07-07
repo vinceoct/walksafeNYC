@@ -50,8 +50,17 @@ const UserPage = () => {
 
     } catch (error) {
         console.error('Error updateing user', error)
+    }}
+ 
+
+    const handleDelete = async () => {
+        try { 
+            await axios.delete(`https://walksafenyc-api-production.up.railway.app/api/users/${id}`,)
+        } catch (error) {
+            console.error('Error deleting user', error)
+        }
     }
-} 
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -91,7 +100,19 @@ const UserPage = () => {
             onChange={(e) => setGender(e.target.value)}>
             </input>
             <button type="submit" onClick={handleSubmit}>Update</button>
+
+            <p><strong>Password: {user.password}</strong></p>
+            <input type="text" placeholder="Update Password" value={password} 
+            onChange={(e) => setPassword(e.target.value)}>
+            </input>
+            <button type="submit" onClick={handleSubmit}>Update</button>
+
+            <div className='Delete-button'>
+                <button type="button" onClick={handleDelete}>Delete Profile</button>
+            </div>
+
         </div>
+   
     )
 }
 
