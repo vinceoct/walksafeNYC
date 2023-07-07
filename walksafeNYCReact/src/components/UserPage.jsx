@@ -70,47 +70,54 @@ const UserPage = () => {
 
     return (
         <div className="userPage">
+            <div className='form-container'>
             <h4>Profile Page</h4>
-            <p><strong>First Name: {user.first_name} </strong></p>
-            <input type="text" placeholder="Update First Name" 
-            value={firstName} 
-            onChange={(e) => setFirstName(e.target.value)}></input>
+            <div className='accountinfo'>
+                <p><strong>First Name: {user.first_name} </strong></p>
+                <input type="text" placeholder="Update First Name" 
+                value={firstName} 
+                onChange={(e) => setFirstName(e.target.value)}></input>
+                <button type="submit" onClick={handleSubmit}>Update</button>
+            </div>
+            <div className='accountinfo'>
+                <p><strong>Last Name: {user.last_name} </strong></p>
+                <input type="text" placeholder="Update Last Name" value={lastName} 
+                onChange={(e) => setLastName(e.target.value)}>
+                </input>
+                <button type="submit" onClick={handleSubmit}>Update</button>
+            </div>
+            <div className='accountinfo'>
+                <p><strong>Email: {user.email} </strong></p>
+                <input type="email" placeholder="Update Email" value={email} 
+                onChange={(e) => setEmail(e.target.value)}> 
+                </input>
             <button type="submit" onClick={handleSubmit}>Update</button>
-
-            <p><strong>Last Name: {user.last_name} </strong></p>
-            <input type="text" placeholder="Update Last Name" value={lastName} 
-            onChange={(e) => setLastName(e.target.value)}>
-            </input>
-            <button type="submit" onClick={handleSubmit}>Update</button>
-
-            <p><strong>Email: {user.email} </strong></p>
-            <input type="email" placeholder="Update Email" value={email} 
-            onChange={(e) => setEmail(e.target.value)}> 
-            </input>
-            <button type="submit" onClick={handleSubmit}>Update</button>
-
-            <p><strong>Date of Birth: {user.date_of_birth} </strong></p>
-            <input type="date" value={dateOfBirth} 
-            onChange={(e) => setDateOfBirth(e.target.value)}>
-            </input>
-            <button type="submit" onClick={handleSubmit}>Update</button>
-
-            <p><strong>Gender: {user.gender}</strong></p>
-            <input type="text" placeholder="Update Gender" value={gender} 
-            onChange={(e) => setGender(e.target.value)}>
-            </input>
-            <button type="submit" onClick={handleSubmit}>Update</button>
-
-            <p><strong>Password: {user.password}</strong></p>
-            <input type="text" placeholder="Update Password" value={password} 
-            onChange={(e) => setPassword(e.target.value)}>
-            </input>
-            <button type="submit" onClick={handleSubmit}>Update</button>
-
+            </div>
+            <div className='accountinfo'>
+                <p><strong>Date of Birth: {user.date_of_birth} </strong></p>
+                <input type="date" value={dateOfBirth} 
+                onChange={(e) => setDateOfBirth(e.target.value)}>
+                </input>
+                <button type="submit" onClick={handleSubmit}>Update</button>
+            </div>
+            <div className='accountinfo'>
+                <p><strong>Gender: {user.gender}</strong></p>
+                <input type="text" placeholder="Update Gender" value={gender} 
+                onChange={(e) => setGender(e.target.value)}>
+                </input>
+                <button type="submit" onClick={handleSubmit}>Update</button>
+            </div>
+            <div className='accountinfo'>
+                <p><strong>Password: {user.password}</strong></p>
+                <input type="text" placeholder="Update Password" value={password} 
+                onChange={(e) => setPassword(e.target.value)}>
+                </input>
+                <button type="submit" onClick={handleSubmit}>Update</button>
+            </div>
             <div className='Delete-button'>
                 <button type="button" onClick={handleDelete}>Delete Profile</button>
             </div>
-
+            </div>
         </div>
    
     )
