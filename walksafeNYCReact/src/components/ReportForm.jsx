@@ -60,10 +60,20 @@ const ReportForm = () => {
         }
     }
 
-    const handleAddress = (e) => {
-        e.preventDefault()
-        
-    }
+        const geocode = async (address) => {
+        setAddressLoading(true)
+        try {
+            const response = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${import.meta.env.VITE_MAPBOXTOKEN}`)
+                const location = response.data.features[0].geometry.coordinates
+                console.log('latiude', location[1])
+                console.log('longitude', location[0])
+                setLongitude(location[0])
+                setLatitude(location[1])
+                setAddressLoading(false)
+            } catch (error) {
+                console.log(error)
+            }
+        }
 
     return (
         <div className="report-form-page">
@@ -189,6 +199,7 @@ const ReportForm = () => {
                 </div>
                 <div className="question">
                     <label htmlFor="currentLocation">Location: </label>
+                    <div className='locationdiv'>
                     {LocationLoading ? ( <button id="loadinglocation">Getting Location</button>
                     ) : (
                         latitude !== '' ? (
@@ -198,7 +209,7 @@ const ReportForm = () => {
                      <p id='or'>OR</p>
                     <textarea id='address' onChange={(e)=>setAddress(e.target.value)} placeholder='Enter address'></textarea>
                 </div>
-                
+                </div>
                  <button className="submit-button" type="submit">Submit Report</button>
                 
             </form>
