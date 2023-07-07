@@ -242,7 +242,8 @@ img {
 
 .question,
 .login-question,
-.account-question {
+.account-question,
+.accountinfo {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
