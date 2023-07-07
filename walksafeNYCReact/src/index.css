@@ -218,7 +218,7 @@ img {
   width: 100%
 }
 
-#comment, #incidentType, #havelocation, #currentLocation, #loadinglocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender, #address {
+#comment, #incidentType, #havelocation, #currentLocation, #loadinglocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender, #address, #confirmPassword{
   width: 65.6%;
   border: none;
   font-family: pathway gothic one;
@@ -232,7 +232,7 @@ img {
   background: linear-gradient(145deg, #e49dd4, #ffbafd);
 }
 
-#comment, #password, #email, #firstName, #lastName, #gender, #address{
+#comment, #password, #email, #firstName, #lastName, #gender, #address, #confirmPassword{
   text-align: left;
   padding: 0px 0px 5px 0px;
   background: #e6e6e6;
@@ -342,4 +342,45 @@ label {
   width: 85%;
   padding: 0px;
   margin-top: 4px
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errorMessage {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }

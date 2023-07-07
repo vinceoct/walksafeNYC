@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import city from '../assets/city.png';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthProvider'
 
 const initialState = {
   email: '',
@@ -9,9 +11,16 @@ const initialState = {
   valid: '',
 };
 
+
+
 const Login = () => {
+
+  const { login } = useContext(AuthContext)
+  const navigate = useNavigate()
+
   const [formState, setFormState] = useState(initialState);
   const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null)
 
   useEffect(() => {
     fetchOneUser();
@@ -32,13 +41,15 @@ const Login = () => {
 
     const { email, password } = formState;
 
-    const selectedUser = users.find(
+    const user = users.find(
       (user) => user.email === email && user.password === password
     );
 
-    if (selectedUser) {
-      console.log('Logged in:', selectedUser);
+    if (user) {
+      console.log('Logged in:', user);
       setFormState({ ...formState, valid: 'Credentials are correct' });
+      login(user)
+      setSelectedUser(user)
     } else {
       setFormState({ ...formState, valid: 'Invalid credentials' });
     }
@@ -47,6 +58,15 @@ const Login = () => {
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.name]: event.target.value });
   };
+
+  const showProfile = () => {
+    if (selectedUser) {
+      navigate(`${selectedUser._id}/`)
+    }
+  }
+
+
+
 
   return (
     <div className="login-page">
@@ -79,6 +99,8 @@ const Login = () => {
             Log in
           </button>
           {formState.valid && <p>{formState.valid}</p>}
+          <button onClick={showProfile}>Go to profile page</button>
+          <Link to="/createAnAccount"><button id="create-account" className="createAccount" className="submit-button">Create an account.</button></Link>
         </form>
         <img src={city} alt="City" />
       </div>
