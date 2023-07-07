@@ -24,7 +24,12 @@ const Map =() => {
     data.forEach((entry) => {
         const lon = entry.lon
         const lat = entry.lat
-        const marker = new mapboxgl.Marker().setLngLat([lon, lat]).addTo(map)
+        const type = entry.incident_type
+        const marker = new mapboxgl.Marker({color: '#fdaeec'})
+        .setLngLat([lon, lat])
+        .setPopup(new mapboxgl.Popup({className: 'popup'}).setHTML(`<h2>${type}</h2>`))
+        .addTo(map)
+        
     })
   
   } catch (error) {
