@@ -14,7 +14,7 @@ const Reports = () => {
         }
         getReports()
         } catch (error) {
-            console.error('Error fetching users:', error);
+            console.error('Error fetching reports:', error);
         }
     }, [reports])
 

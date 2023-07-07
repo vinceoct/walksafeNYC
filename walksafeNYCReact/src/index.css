@@ -386,7 +386,7 @@ label {
   margin-bottom: 0.5rem;
 }
 
-.reports {
+.reports, .report-info{
   border: solid 2px white;
   border-radius: 5px;
   width: 400px;
@@ -402,8 +402,12 @@ label {
   border-color:rgba(199, 136, 185, 1); 
 }
 
-.report-grid {
+.report-grid, .reportPage{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.report-info {
+  margin-top: 100px;
 }
