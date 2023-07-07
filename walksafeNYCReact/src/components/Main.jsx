@@ -5,6 +5,7 @@ import ReportForm from './ReportForm'
 import CreateAnAccount from './CreateAnAccount'
 import ReportPage from './ReportPage'
 import UserPage from './UserPage'
+import Reports from './Reports'
 
 const Main = () => {
     return (
@@ -16,6 +17,7 @@ const Main = () => {
                 <Route path="/createAnAccount" element={<CreateAnAccount />} />
                 <Route path="/reportPage" element={<ReportPage />} />
                 <Route path="/login/:id" element={<UserPage />} />
+                <Route path="/reports" element={<Reports />} />
             </Routes>
         </div>
     )
