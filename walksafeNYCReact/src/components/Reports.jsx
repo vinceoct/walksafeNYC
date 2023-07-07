@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import city from '../assets/city.png'
 
 const Reports = () => {
     let navigate = useNavigate()
@@ -25,6 +26,8 @@ const Reports = () => {
     }
 
     return (
+        <div className='allReportsPage'>
+        <div className='form-container'>
         <section className="report-grid">
             {
                 reports.map((report, id) => (
@@ -37,6 +40,9 @@ const Reports = () => {
                 ))
             }
         </section>
+        <img src={city} alt="City" />
+        </div>
+        </div>
     )
 }
 
