@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import city from '../assets/city.png'
 import axios from 'axios'
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 const ReportForm = () => {
 
     const [date, setDate] = useState('')
@@ -12,7 +13,7 @@ const ReportForm = () => {
     const [address, setAddress] = useState('')
     const [LocationLoading, setLocationLoading] = useState(false)
 
-    const newReport = async () => {
+    const newReport = async (latitude, longitude) => {
         const response = await axios.post(`http://localhost:3001/api/posts`, {
         lat: latitude,
         lon: longitude,
@@ -32,9 +33,11 @@ const ReportForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        newReport()
-        console.log(time)
-        
+        if (address != '') {
+        geocode(address)
+        } else if (latitude != '' && address === ''){
+        newReport(latitude, longitude)
+        }
     }
 
     // pulls location data from user device when use current location button is clicked. 
@@ -61,7 +64,6 @@ const ReportForm = () => {
     }
 
         const geocode = async (address) => {
-        setAddressLoading(true)
         try {
             const response = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${import.meta.env.VITE_MAPBOXTOKEN}`)
                 const location = response.data.features[0].geometry.coordinates
@@ -69,7 +71,7 @@ const ReportForm = () => {
                 console.log('longitude', location[0])
                 setLongitude(location[0])
                 setLatitude(location[1])
-                setAddressLoading(false)
+                newReport(location[1], location[0])
             } catch (error) {
                 console.log(error)
             }
