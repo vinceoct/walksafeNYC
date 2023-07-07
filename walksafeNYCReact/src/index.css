@@ -385,3 +385,7 @@ label {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
+.reports {
+  border: solid 2px white;
+}
