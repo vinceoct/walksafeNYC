@@ -388,4 +388,22 @@ label {
 
 .reports {
   border: solid 2px white;
+  border-radius: 5px;
+  width: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.reports:hover {
+  cursor: pointer;
+  color:rgba(199, 136, 185, 1);
+  border-color:rgba(199, 136, 185, 1); 
+}
+
+.report-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
