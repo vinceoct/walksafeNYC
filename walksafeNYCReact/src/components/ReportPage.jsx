@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
-
+import city from '../assets/city.png'
 
 const ReportPage = () => {
 
@@ -26,6 +26,7 @@ const ReportPage = () => {
 
     return (
         <div className="reportPage">
+            <div className='form-container'>
             <h4>Incident Report</h4>
             <div className="report-info">
                 <p>Date of Incident: {report.post_date}</p>
@@ -33,6 +34,8 @@ const ReportPage = () => {
                 <p>Incident Type: {report.incident_type}</p>
                 <p>Comment: {report.comment}</p>
                 <p>Location: </p>
+            </div>
+            <img src={city} alt="City" />
             </div>
         </div>
     )
