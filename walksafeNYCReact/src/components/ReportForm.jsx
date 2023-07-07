@@ -5,8 +5,8 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 const ReportForm = () => {
 
     const [date, setDate] = useState('')
-    const [time, setTime] = useState('')
-    const [incidentType, setIncidentType] = useState('')
+    const [time, setTime] = useState('12:00 AM')
+    const [incidentType, setIncidentType] = useState('Verbal Harassment')
     const [comment, setComment] = useState('')
     const [longitude, setLongitude] = useState('')
     const [latitude, setLatitude] = useState('')
