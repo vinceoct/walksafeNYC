@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import React, { useState, useContext, useEffect } from 'react'
 import city from '../assets/city.png'
 import { AuthContext } from '../context/AuthProvider'
@@ -8,7 +8,9 @@ import axios from 'axios'
 const UserPage = () => {
     const { id } = useParams()
 
-    const { loggedIn, user } = useContext(AuthContext)
+    const { loggedIn, user, logout } = useContext(AuthContext)
+
+    let navigate = useNavigate()
 
     if (!loggedIn || !user) {
         return null
@@ -68,6 +70,13 @@ const UserPage = () => {
        handleProfileUpdate()
     }
 
+    const handleLogout = () => {
+        logout()
+        navigate("/")
+    }
+
+
+
     return (
         <div className="userPage">
             <div className='form-container'>
@@ -117,6 +126,11 @@ const UserPage = () => {
             <div className='Delete-button'>
                 <button type="button" onClick={handleDelete}>Delete Profile</button>
             </div>
+            </div>
+            <div>
+                <div className= 'logout-button'>
+                    <button type='button' onClick={handleLogout}>Logout</button>
+                </div>
             </div>
         </div>
    
