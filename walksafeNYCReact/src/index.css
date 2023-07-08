@@ -487,3 +487,14 @@ color: #e6e6e6;
 .report-grid::-webkit-scrollbar-thumb:hover {
   background: #fdaeec;
 }
+
+.pleaselogin {
+  font-family: pathway gothic one;
+  font-style: italic;
+  text-transform: capitalize;
+  /* text-shadow: -1px -1px 10px #00daff,
+      1px 1px 10px #002f43; */
+  color: #fdaeec;
+  margin-top: -20px;
+  margin-bottom: -17px
+}
