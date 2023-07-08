@@ -33,7 +33,7 @@ const ReportPage = () => {
                 <p>Time of Incident: {report.post_time}</p>
                 <p>Incident Type: {report.incident_type}</p>
                 <p>Comment: {report.comment}</p>
-                <p>Location: </p>
+                <p>Location: {report.lat},{report.lon} </p>
             </div>
             <img src={city} alt="City" />
             </div>

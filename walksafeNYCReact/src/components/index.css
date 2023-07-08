@@ -71,7 +71,7 @@ body {
   display: flex;
   justify-content: space-around;
   margin-top: -15px;
-  font-size: min(3vw, 24px);
+  font-size: 24px;
   text-shadow: -1px -1px 10px #00daff,
     1px 1px 10px #002f43;
   /* transition: color 300ms ease, box-shadow 500ms ease; */
@@ -106,12 +106,6 @@ a {
   transition: color 500ms ease;
 }
 
-h2{
-  color: #ffffff;
-  font-family: pathway gothic one;
-  text-shadow: -1px -1px 10px #00a1e6,
-      1px 1px 10px #00c0ff;
-}
 
 h3 {
   margin-top: 30px;
@@ -146,7 +140,7 @@ img {
   }
 
 
-.homePage, .reportPage, .allReportsPage, .report-form-page, .login-page, .create-account-page, .userPage {
+.homePage, .report-form-page, .login-page, .create-account-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,31 +159,6 @@ img {
   box-shadow: 5px 5px 20px #00a1e6,
              -5px -5px 20px #00c0ff;
 }
-.popup button{
-  width: 10%;
-  padding: 0;
-  margin-top: -6px;
-  
-  background: transparent;
-  top: 0;
-  right: 0;
-  font-size: 23px;
-  color:#fdaeec;
-  font-family: pathway gothic one;
-}
-.popup button:hover{
-  background: transparent;
-  color:#e6e6e6;
-}
-.mapboxgl-popup-tip{
-  opacity: 0;
-}
-.mapboxgl-popup-content{
-  background: linear-gradient(135deg, #00a1e6, #00c0ff) !important;
-  border-radius: 10px !important;
-  box-shadow: 6px 6px 20px #b4b4b4,
-       -6px -6px 10px #ffffff !important;
-}
 
 .map.mapboxgl-map {
   width: 1200px;
@@ -200,8 +169,7 @@ img {
 .report-form,
 .login-form,
 .report-info,
-.create-account-form, .accountcont
- {
+.create-account-form{
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -242,8 +210,7 @@ img {
 
 .question,
 .login-question,
-.account-question,
-.accountinfo {
+.account-question {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
@@ -251,7 +218,7 @@ img {
   width: 100%
 }
 
-#comment, #incidentType, #havelocation, #currentLocation, #loadinglocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender, #address, #confirmPassword {
+#comment, #incidentType, #currentLocation, #loadinglocation, #havelocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender {
   width: 65.6%;
   border: none;
   font-family: pathway gothic one;
@@ -261,15 +228,11 @@ img {
   text-align: center;
   color: #1e1e1e
 }
-#havelocation{
-  background: linear-gradient(145deg, #e49dd4, #ffbafd);
-}
 
-#comment, #password, #email, #firstName, #lastName, #gender, #address, #confirmPassword, .userupdate input{
+#comment, #password, #email, #firstName, #lastName, #gender {
   text-align: left;
   padding: 0px 0px 5px 0px;
   background: #e6e6e6;
-  border: none;
   box-shadow: inset 6px 6px 10px #b4b4b4,
               inset -6px -6px 10px #ffffff;
 }
@@ -297,12 +260,8 @@ button:hover, #currentLocation:hover,
   cursor: pointer;
 }
 
-#havelocation:hover{
-  cursor: none;
-}
-
 #comment:hover, #email:hover,
-#password:hover, #gender:hover, #firstName:hover, #lastName:hover, #address:hover{
+#password:hover, #gender:hover, #firstName:hover, #lastName:hover {
   background: #fdaeec;
   box-shadow: inset 11px 11px 22px #c788b9,
     inset -11px -11px 22px #ffbcff;
@@ -323,72 +282,22 @@ button:hover, #currentLocation:hover,
   100%{background-position: left center}
 }
 
-#currentLocation, #havelocation, #loadinglocation{
-  width: 45%;
-  height: 35px
-}
-#or{
-  font-family: pathway gothic one;
-  width: 5%;
-  margin-top: 6px;
-  margin-bottom: 0;
-  font-family: pathway gothic one;
-  text-shadow: -1px -1px 10px #00a1e6,
-                1px 1px 10px #002f43;
-}
-#address{
-  width:45%;
-  height: 30px 
-}
 input,
 textarea {
   border-radius: 5px;
   font-family: pathway gothic one;
 }
 
-label, .accountcont p, .reportcont p {
+label {
   margin-right: 10px;
   color: white;
   font-family: pathway gothic one;
   text-shadow: -1px -1px 10px #00a1e6,
                 1px 1px 10px #002f43;
 }
-.accountcont p, .reportcont p{
-  font-size: 15px;
-}
-.locationdiv, .userupdate {
-  width: 65.6%;
-  display: flex;
-  justify-content: space-between
-}
 
-.userupdate{
-  width: 54.5%;
-  align-items: center;
-}
-
-.userupdate button{
-  width: 30%;
-  font-family: pathway gothic one;
-}
-
-#deleteaccount{
-  margin-right: 10px;
-}
-#deleteaccount:hover{
-background: linear-gradient(145deg, #b43737, #ff1e1e);
-color: #e6e6e6;
-}
-.accountcont h4{
-  margin-top: -80px;
-  margin-bottom: 45px
-}
-
-.accountinfo{
-  margin-top: -22px;
-}
-.userupdate input{
-  width: 65%;  
+p {
+  color: #1e1e1e;
 }
 
 .report-info {
@@ -408,97 +317,4 @@ color: #e6e6e6;
   width: 85%;
   padding: 0px;
   margin-top: 4px
-}
-
-.instructions {
-  font-size: 0.75rem;
-  border-radius: 0.5rem;
-  background: #000;
-  color: #fff;
-  padding: 0.25rem;
-  position: relative;
-  bottom: -10px;
-}
-
-.instructions > svg {
-  margin-right: 0.25rem;
-}
-
-.offscreen {
-  position: absolute;
-  left: -9999px;
-}
-
-.hide {
-  display: none;
-}
-
-.valid {
-  color: limegreen;
-  margin-left: 0.25rem;
-}
-
-.invalid {
-  color: red;
-  margin-left: 0.25rem;
-}
-
-.errorMessage {
-  background-color: lightpink;
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.reports{
-  font-family: pathway gothic one;
-  border-radius: 5px;
-  width: 80%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-  padding-left: 10px;
-  background: linear-gradient(135deg, #00a1e6, #00c0ff);
-  box-shadow: 1px 1px 5px #00a1e6,
-            -1px -1px 5px #00c0ff;
-}
-.reportcont{
-  border-radius: 5px;
-  width: 80%;
-  background: linear-gradient(135deg, #00a1e6, #00c0ff);
-  box-shadow: 1px 1px 5px #00a1e6,
-      -1px -1px 5px #00c0ff;
-}
-.reports:hover {
-  cursor: pointer;
-  color:#fdaeec;
-}
-
-.report-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-  width: 65%
-}
-.report-grid::-webkit-scrollbar {
-  width: 10px; 
-}
-.report-grid::-webkit-scrollbar-thumb {
-  background: #ffffff;
-  border-radius: 10px;
-}
-
-.report-grid::-webkit-scrollbar-thumb:hover {
-  background: #fdaeec;
-}
-
-.pleaselogin {
-  font-family: pathway gothic one;
-  font-style: italic;
-  text-transform: capitalize;
-  color: #fdaeec;
-  margin-top: -20px;
-  margin-bottom: -17px
 }
