@@ -404,7 +404,7 @@ color: #e6e6e6;
   width: 100%
 }
 
-.createAccount, .login{
+.login{
   width: 85%;
   padding: 0px;
   margin-top: 4px
@@ -501,4 +501,24 @@ color: #e6e6e6;
   color: #fdaeec;
   margin-top: -20px;
   margin-bottom: -17px
+}
+
+
+.loginbuttons{
+  display: flex;
+  margin-top: 10px;
+  width: 85%;
+  justify-content: space-between
+}
+.profbutton{
+  width: 48%;
+}
+#linktocreate{
+  width: 48%;
+  padding: 0
+
+}
+.createAccount {
+  width: 100%;
+  margin: 0px
 }
