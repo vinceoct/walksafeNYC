@@ -33,9 +33,7 @@ const Reports = () => {
                 reports.map((report, id) => (
                     <section key={id} onClick={()=>showReport(id)} className="reports">
                         <p>Date of Incident: {report.post_date}</p>
-                        <p>Time of Incident: {report.post_time}</p>
-                        <p>Type of harassment: {report.incident_type}</p>
-                        <p>Description: {report.comment}</p>
+                        <p>Type of Harassment: {report.incident_type}</p>
                     </section>
                 ))
             }
