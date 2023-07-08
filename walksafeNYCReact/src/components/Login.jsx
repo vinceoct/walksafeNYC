@@ -144,3 +144,7 @@ const Login = () => {
 };
 
 export default Login;
+//  <div className='loginbuttons'>
+//         <button className='profbutton' onClick={showProfile}>Go to profile page</button>
+//          <Link id="linktocreate" to="/createAnAccount"><button className="createAccount">Create an account.</button></Link>
+//          </div>
