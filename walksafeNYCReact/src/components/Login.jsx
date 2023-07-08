@@ -99,8 +99,10 @@ const Login = () => {
             Log in
           </button>
           {formState.valid && <p>{formState.valid}</p>}
-          <button onClick={showProfile}>Go to profile page</button>
-          <Link to="/createAnAccount"><button id="create-account" className="createAccount" className="submit-button">Create an account.</button></Link>
+          <div className='loginbuttons'>
+          <button className='profbutton' onClick={showProfile}>Go to profile page</button>
+          <Link id="linktocreate" to="/createAnAccount"><button className="createAccount">Create an account.</button></Link>
+          </div>
         </form>
         <img src={city} alt="City" />
       </div>
