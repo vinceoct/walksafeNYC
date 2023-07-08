@@ -71,7 +71,7 @@ body {
   display: flex;
   justify-content: space-around;
   margin-top: -15px;
-  font-size: 24px;
+  font-size: min(3vw, 24px);
   text-shadow: -1px -1px 10px #00daff,
     1px 1px 10px #002f43;
   /* transition: color 300ms ease, box-shadow 500ms ease; */
@@ -146,7 +146,7 @@ img {
   }
 
 
-.homePage, .reportPage, .allReportsPage, .report-form-page, .login-page, .create-account-page {
+.homePage, .reportPage, .allReportsPage, .report-form-page, .login-page, .create-account-page, .userPage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,7 +200,7 @@ img {
 .report-form,
 .login-form,
 .report-info,
-.create-account-form
+.create-account-form, .accountcont
  {
   position: absolute;
   display: flex;
@@ -251,7 +251,7 @@ img {
   width: 100%
 }
 
-#comment, #incidentType, #havelocation, #currentLocation, #loadinglocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender, #address, #confirmPassword{
+#comment, #incidentType, #havelocation, #currentLocation, #loadinglocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender, #address, #confirmPassword {
   width: 65.6%;
   border: none;
   font-family: pathway gothic one;
@@ -265,10 +265,11 @@ img {
   background: linear-gradient(145deg, #e49dd4, #ffbafd);
 }
 
-#comment, #password, #email, #firstName, #lastName, #gender, #address, #confirmPassword{
+#comment, #password, #email, #firstName, #lastName, #gender, #address, #confirmPassword, .userupdate input{
   text-align: left;
   padding: 0px 0px 5px 0px;
   background: #e6e6e6;
+  border: none;
   box-shadow: inset 6px 6px 10px #b4b4b4,
               inset -6px -6px 10px #ffffff;
 }
@@ -345,18 +346,49 @@ textarea {
   font-family: pathway gothic one;
 }
 
-label {
+label, .accountcont p {
   margin-right: 10px;
   color: white;
   font-family: pathway gothic one;
   text-shadow: -1px -1px 10px #00a1e6,
                 1px 1px 10px #002f43;
 }
-
-.locationdiv {
+.accountcont p{
+  font-size: 15px;
+}
+.locationdiv, .userupdate {
   width: 65.6%;
   display: flex;
   justify-content: space-between
+}
+
+.userupdate{
+  width: 54.5%;
+  align-items: center;
+}
+
+.userupdate button{
+  width: 30%;
+  font-family: pathway gothic one;
+}
+
+#deleteaccount{
+  margin-right: 10px;
+}
+#deleteaccount:hover{
+background: linear-gradient(145deg, #b43737, #ff1e1e);
+color: #e6e6e6;
+}
+.accountcont h4{
+  margin-top: -80px;
+  margin-bottom: 45px
+}
+
+.accountinfo{
+  margin-top: -22px;
+}
+.userupdate input{
+  width: 65%;  
 }
 
 .report-info {
