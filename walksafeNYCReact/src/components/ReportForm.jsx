@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthProvider'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import Login from './Login'
 const ReportForm = () => {
 
     const { loggedIn, user } = useContext(AuthContext)
@@ -11,7 +12,11 @@ const ReportForm = () => {
     console.log(user)
 
     if (!loggedIn || !user) {
-        return null
+        return(
+        <div>
+        <h1 className='pleaselogin'>please login</h1>
+        <Login/>
+        </div>)
     }
 
     const [date, setDate] = useState('')
