@@ -71,9 +71,11 @@ const UserPage = () => {
     }
 
     const handleLogout = () => {
-        logout()
-        navigate("/")
-    }
+        localStorage.removeItem('user'); // Clear user from local storage
+        logout(); // Clear user from context
+        setSelectedUser(null);
+        navigate(`/login?id=${selectedUser._id}`); // Navigate to login page with user ID as query parameter
+      };
 
 
 
