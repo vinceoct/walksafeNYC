@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import city from '../assets/city.png';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../context/AuthProvider'
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 
 const initialState = {
   email: '',
@@ -11,24 +11,41 @@ const initialState = {
   valid: '',
 };
 
-
-
 const Login = () => {
-
-  const { login } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { login, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [formState, setFormState] = useState(initialState);
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null)
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     fetchOneUser();
   }, []);
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      const user = JSON.parse(loggedInUser);
+      login(user);
+      setSelectedUser(user);
+    }
+  }, [login]);
+
+  useEffect(() => {
+    const userId = new URLSearchParams(location.search).get('id');
+    if (userId && selectedUser && userId === selectedUser._id) {
+      setSelectedUser(null);
+      localStorage.removeItem('user');
+    }
+  }, [location.search, selectedUser]);
+
   const fetchOneUser = async () => {
     try {
-      const response = await axios.get("https://walksafenyc-api-production.up.railway.app/api/users");
+      const response = await axios.get(
+        'https://walksafenyc-api-production.up.railway.app/api/users'
+      );
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -48,8 +65,9 @@ const Login = () => {
     if (user) {
       console.log('Logged in:', user);
       setFormState({ ...formState, valid: 'Credentials are correct' });
-      login(user)
-      setSelectedUser(user)
+      localStorage.setItem('user', JSON.stringify(user)); // Store user in local storage
+      login(user);
+      setSelectedUser(user);
     } else {
       setFormState({ ...formState, valid: 'Invalid credentials' });
     }
@@ -59,14 +77,18 @@ const Login = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value });
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('user'); // Clear user from local storage
+    logout(); // Clear user from context
+    setSelectedUser(null);
+    navigate(`/login?id=${selectedUser._id}`); // Navigate to login page with user ID as query parameter
+  };
+
   const showProfile = () => {
     if (selectedUser) {
-      navigate(`${selectedUser._id}/`)
+      navigate(`${selectedUser._id}/`);
     }
-  }
-
-
-
+  };
 
   return (
     <div className="login-page">
@@ -93,14 +115,27 @@ const Login = () => {
               id="password"
               type="password"
               placeholder="*******"
-           />
+            />
           </div>
           <button id="log-in-button" className="submit-button" type="submit">
             Log in
           </button>
           {formState.valid && <p>{formState.valid}</p>}
-          <button onClick={showProfile}>Go to profile page</button>
-          <Link to="/createAnAccount"><button id="create-account" className="createAccount" className="submit-button">Create an account.</button></Link>
+          {selectedUser ? (
+            <>
+              <button onClick={showProfile}>Go to profile page</button>
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <Link to="/createAnAccount">
+              <button
+                id="create-account"
+                className="createAccount submit-button"
+              >
+                Create an account.
+              </button>
+            </Link>
+          )}
         </form>
         <img src={city} alt="City" />
       </div>
