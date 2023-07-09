@@ -70,7 +70,7 @@ const ReportForm = () => {
         }
 
         const newReport = async (latitude, longitude) => {
-            const response = await axios.post(`https://walksafenyc-api-production.up.railway.app/api/posts`, {
+            const response = await axios.post(`https://walksafenyc-api-production-ba84.up.railway.app/api/posts`, {
             lat: latitude,
             lon: longitude,
             post_date: date,

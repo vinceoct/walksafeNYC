@@ -64,7 +64,7 @@ const CreateAnAccount = () => {
             return
         }
         try {
-           const response = await axios.post(`https://walksafenyc-api-production.up.railway.app/api/users`, {
+           const response = await axios.post(`https://walksafenyc-api-production-ba84.up.railway.app/api/users`, {
            first_name: firstName,
            last_name: lastName,
            email: emailInput,

@@ -13,7 +13,7 @@ const ReportPage = () => {
     useEffect(()=> {
         const getReport = async () => {
             try {
-                const response = await axios.get(`https://walksafenyc-api-production.up.railway.app/api/posts/`)
+                const response = await axios.get(`https://walksafenyc-api-production-ba84.up.railway.app/api/posts/`)
                 const data = response.data[id]
                 console.log(data)
                 setReport(data)

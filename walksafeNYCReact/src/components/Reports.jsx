@@ -10,7 +10,7 @@ const Reports = () => {
     useEffect(() => {
         try {
         const getReports = async () => {
-            const response = await axios.get("https://walksafenyc-api-production.up.railway.app/api/posts")
+            const response = await axios.get("https://walksafenyc-api-production-ba84.up.railway.app/api/posts")
             setReports(response.data)
         }
         getReports()
