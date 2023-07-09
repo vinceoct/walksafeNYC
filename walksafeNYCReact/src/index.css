@@ -71,7 +71,7 @@ body {
   display: flex;
   justify-content: space-around;
   margin-top: -15px;
-  font-size: min(3vw, 24px);
+  font-size: min(3.75vw, 24px);
   text-shadow: -1px -1px 10px #00daff,
     1px 1px 10px #002f43;
   /* transition: color 300ms ease, box-shadow 500ms ease; */
@@ -166,15 +166,15 @@ img {
              -5px -5px 20px #00c0ff;
 }
 .popup button{
-  width: 10%;
+  width: 11%;
   padding: 0;
   margin-top: -6px;
   
   background: transparent;
   top: 0;
   right: 0;
-  font-size: 23px;
-  color:#fdaeec;
+  font-size: 28px;
+  color:#ff2cd1;
   font-family: pathway gothic one;
 }
 .popup button:hover{
@@ -185,10 +185,14 @@ img {
   opacity: 0;
 }
 .mapboxgl-popup-content{
-  background: linear-gradient(135deg, #00a1e6, #00c0ff) !important;
-  border-radius: 10px !important;
-  box-shadow: 6px 6px 20px #b4b4b4,
-       -6px -6px 10px #ffffff !important;
+  background: linear-gradient(135deg, rgba(0, 161, 230, 0.5), rgba(0, 192, 255, .4)) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .2),
+      -5px -5px 20px rgba(255, 255, 255, .3) !important;
+  }
+.mapboxgl-popup {
+  background: transparent !important
 }
 
 .map.mapboxgl-map {
@@ -243,13 +247,15 @@ img {
 .question,
 .login-question,
 .account-question,
-.accountinfo {
+.accountinfo,
+.reportdetails {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
   justify-content: space-between;
   width: 100%
 }
+
 
 #comment, #incidentType, #havelocation, #currentLocation, #loadinglocation ,#time, #date, #email, #password, #firstName, #lastName, #dateOfBirth, #gender, #address, #confirmPassword {
   width: 65.6%;
@@ -265,7 +271,7 @@ img {
   background: linear-gradient(145deg, #e49dd4, #ffbafd);
 }
 
-#comment, #password, #email, #firstName, #lastName, #gender, #address, #confirmPassword, .userupdate input{
+#comment, #password, #updateinput, #email, #firstName, #lastName, #gender, #address, #confirmPassword, .userupdate input{
   text-align: left;
   padding: 0px 0px 5px 0px;
   background: #e6e6e6;
@@ -372,10 +378,8 @@ label, .accountcont p, .reportcont p {
   font-family: pathway gothic one;
 }
 
-#deleteaccount{
-  margin-right: 10px;
-}
-#deleteaccount:hover{
+
+#deleteaccount:hover, #deleteReport:hover{
 background: linear-gradient(145deg, #b43737, #ff1e1e);
 color: #e6e6e6;
 }
@@ -450,8 +454,16 @@ color: #e6e6e6;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
 }
+.reportdetails {
+  width: 70%;
+  margin-bottom: -10px
+}
 
-.reports{
+.reportcont h4{
+  margin-top: -100px
+}
+
+.reports, .userreports{
   font-family: pathway gothic one;
   border-radius: 5px;
   width: 80%;
@@ -459,16 +471,27 @@ color: #e6e6e6;
   margin-bottom: 10px;
   text-align: left;
   padding-left: 10px;
-  background: linear-gradient(135deg, #00a1e6, #00c0ff);
-  box-shadow: 1px 1px 5px #00a1e6,
-            -1px -1px 5px #00c0ff;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, .2),
+      -5px -5px 20px rgba(0, 192, 255, .3);
+  border: .5px solid rgba(0, 192, 255, .1)
 }
 .reportcont{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
-  width: 80%;
-  background: linear-gradient(135deg, #00a1e6, #00c0ff);
-  box-shadow: 1px 1px 5px #00a1e6,
-      -1px -1px 5px #00c0ff;
+  width: 90%;
+  height: 90%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  box-shadow: 5px 5px 20px rgba(0,0,0, .2),
+              -5px -5px 20px rgba(0,192,255,.3);
+  border: .5px solid rgba(0,192,255, .1)
 }
 .reports:hover {
   cursor: pointer;
@@ -480,7 +503,7 @@ color: #e6e6e6;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  width: 65%
+  width: 95%
 }
 .report-grid::-webkit-scrollbar {
   width: 10px; 
@@ -503,6 +526,57 @@ color: #e6e6e6;
   margin-bottom: -17px
 }
 
+#already-have-account {
+  width: 100%
+}
 
+#create-account.createAccount {
+  width: 100%;
+  padding: 0px;
+  margin-top: 3px
+}
 
+.loginbuttons {
+  display: flex;
+  margin-top: 10px;
+  width: 85%;
+  justify-content: space-between
+}
 
+.profbutton, .logout{
+  width: 48%;
+}
+
+#linktocreate{
+  width: 85%
+}
+
+.userbuttons{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%
+}
+
+a.home{
+  padding: 0px;
+}
+
+.commentupdate{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-bottom: 2px;
+  margin-top: 10px;
+}
+
+.userreports{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#deleteReport {
+  width: 70%;
+  margin: 5px;
+}

@@ -17,7 +17,7 @@ const Map =() => {
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOXTOKEN
     const map = new mapboxgl.Map({
         container: mapContainerRef.current,
-        style: 'mapbox://styles/mapbox/light-v11',
+        style: 'mapbox://styles/mapbox/streets-v12',
         center: [-73.9, 40.7],
         zoom: 9.4,
     })

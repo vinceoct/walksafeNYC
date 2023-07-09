@@ -71,13 +71,21 @@ const UserReports = () => {
         <section className="report-grid">
             {
                 userReports.map((userReport, index) => (
-                    <section key={index} className="reports">
-                            <p>Date of Incident: {userReport.post_date}</p>
-                            <p>Time of Incident: {userReport.post_time}</p>
-                            <p>Type of harassment: {userReport.incident_type}</p>
-                            <p>Description: {userReport.comment}</p>
+                    <section key={index} className="userreports">
+                            <div className='reportdetails'>
+                            <p>Date of Incident:</p> <p>{userReport.post_date}</p>
+                            </div>
+                            <div className='reportdetails'>
+                            <p>Time of Incident:</p> <p>{userReport.post_time}</p>
+                            </div>
+                            <div className='reportdetails'>
+                            <p>Type of harassment:</p> <p>{userReport.incident_type}</p>
+                            </div>
+                            <div className='reportdetails'>
+                            <p>Description:</p> <p>{userReport.comment}</p>
+                            </div>
                             <div className='commentupdate'>
-                            <input type="text" placeholder="Edit comment" onChange={(e) => setComment(e.target.value)}>
+                            <input type="text" id='updateinput' placeholder="Edit comment" onChange={(e) => setComment(e.target.value)}>
                             </input>
                             <button type="submit" id="updateComment" onClick={() =>handleCommentUpdate(index)}>Update Comment</button>
                             </div>
