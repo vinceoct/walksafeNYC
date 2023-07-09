@@ -122,16 +122,13 @@ const Login = () => {
           </button>
           {formState.valid && <p>{formState.valid}</p>}
           {selectedUser ? (
-            <>
-              <button onClick={showProfile}>Go to profile page</button>
-              <button onClick={handleLogout}>Logout</button>
-            </>
+            <div className='loginbuttons'>
+              <button className='profbutton' onClick={showProfile}>Go to profile page</button>
+              <button className='logout' onClick={handleLogout}>Logout</button>
+            </div>
           ) : (
-            <Link to="/createAnAccount">
-              <button
-                id="create-account"
-                className="createAccount submit-button"
-              >
+            <Link to="/createAnAccount" id='linktocreate'>
+              <button id="create-account" className="createAccount">
                 Create an account.
               </button>
             </Link>
@@ -144,7 +141,3 @@ const Login = () => {
 };
 
 export default Login;
-//  <div className='loginbuttons'>
-//         <button className='profbutton' onClick={showProfile}>Go to profile page</button>
-//          <Link id="linktocreate" to="/createAnAccount"><button className="createAccount">Create an account.</button></Link>
-//          </div>

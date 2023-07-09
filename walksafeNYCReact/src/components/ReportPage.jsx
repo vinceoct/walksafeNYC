@@ -29,11 +29,21 @@ const ReportPage = () => {
             <div className='form-container'>
             <div className='reportcont'>
             <h4>Incident Report</h4>
-                <p>Date of Incident: {report.post_date}</p>
-                <p>Time of Incident: {report.post_time}</p>
-                <p>Incident Type: {report.incident_type}</p>
-                <p>Comment: {report.comment}</p>
-                <p>Location: {report.lat},{report.lon} </p>
+                <div className='reportdetails'>
+                    <p>Date of Incident:</p> <p>{report.post_date}</p>
+                </div>
+                <div className='reportdetails'>
+                    <p>Time of Incident:</p> <p>{report.post_time}</p>
+                </div>
+                <div className='reportdetails'>
+                    <p>Incident Type:</p> <p>{report.incident_type}</p>
+                </div>
+                <div className='reportdetails'>
+                    <p>Comment:</p> <p>{report.comment}</p>
+                </div>
+                <div className='reportdetails'>
+                    <p>Location:</p> <p>Latitude: {report.lat}, Longitude: {report.lon} </p>
+                </div>
             </div>
             <img src={city} alt="City" />
             </div>
