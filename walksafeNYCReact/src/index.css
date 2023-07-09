@@ -504,21 +504,5 @@ color: #e6e6e6;
 }
 
 
-.loginbuttons{
-  display: flex;
-  margin-top: 10px;
-  width: 85%;
-  justify-content: space-between
-}
-.profbutton{
-  width: 48%;
-}
-#linktocreate{
-  width: 48%;
-  padding: 0
 
-}
-.createAccount {
-  width: 100%;
-  margin: 0px
-}
+

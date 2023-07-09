@@ -21,7 +21,7 @@ const ReportForm = () => {
 
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    const [incidentType, setIncidentType] = useState('')
+    const [incidentType, setIncidentType] = useState('Verbal harassment')
     const [comment, setComment] = useState('')
     const [longitude, setLongitude] = useState('')
     const [latitude, setLatitude] = useState('')
@@ -31,15 +31,6 @@ const ReportForm = () => {
 
     
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setSuccess(true)
-        if (address != '') {
-        geocode(address)
-        } else if (latitude != '' && address === ''){
-        newReport(latitude, longitude)
-        }
-    }
 
     // pulls location data from user device when use current location button is clicked. 
     const handleGeolocation = (e) => {
@@ -96,6 +87,16 @@ const ReportForm = () => {
             })
         }
 
+        const handleSubmit = (e) => {
+            e.preventDefault()
+            setSuccess(true)
+            if (address != '') {
+            geocode(address)
+            } else if (latitude != '' && address === ''){
+            newReport(latitude, longitude)
+            }
+        }
+        
     return (
         <div className="report-form-page">
               {success ? (
@@ -251,4 +252,3 @@ const ReportForm = () => {
 }
 
 export default ReportForm
-

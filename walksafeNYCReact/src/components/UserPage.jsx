@@ -3,18 +3,20 @@ import React, { useState, useContext, useEffect } from 'react'
 import city from '../assets/city.png'
 import { AuthContext } from '../context/AuthProvider'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const UserPage = () => {
-    const { id } = useParams()
 
     const { loggedIn, user, logout } = useContext(AuthContext)
 
     let navigate = useNavigate()
 
-    if (!loggedIn || !user) {
-        return null
-    }
+
+
+    const id = user._id 
+
+
 
 
 
@@ -37,6 +39,7 @@ const UserPage = () => {
     const [password, setPassword] = useState(user.password)
     const [dateOfBirth, setDateOfBirth] = useState(user.date_of_birth)
     const [gender, setGender] = useState(user.gender)
+    const [success, setSuccess] = useState(false)
 
     const handleProfileUpdate = async () => {
         try {
@@ -49,38 +52,49 @@ const UserPage = () => {
             date_of_birth: dateOfBirth,
             gender: gender 
           } )
+          setSuccess(true)
 
     } catch (error) {
-        console.error('Error updateing user', error)
+        console.error('Error updating user', error)
     }}
  
 
     const handleDelete = async () => {
         try { 
             await axios.delete(`https://walksafenyc-api-production.up.railway.app/api/users/${id}`,)
+            setSuccess(true)
+            handleLogout()
         } catch (error) {
             console.error('Error deleting user', error)
         }
     }
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(email)
-       handleProfileUpdate()
-    }
+  
 
     const handleLogout = () => {
         localStorage.removeItem('user'); // Clear user from local storage
-        logout(); // Clear user from context
+        logout(user); // Clear user from context
         setSelectedUser(null);
-        navigate(`/login?id=${selectedUser._id}`); // Navigate to login page with user ID as query parameter
       };
+
+    
+    const showUserReports = () => {
+        navigate(`userReports/${id}/`)
+    }
 
 
 
     return (
         <div className="userPage">
+           {success ? (
+                <section>
+                    <h4>Changes saved successfully.</h4>
+                    <p>
+                    <Link className="home" to="/"><button id="already-have-account" className="submit-button">Go home.</button></Link> 
+                    </p>
+                </section>
+            ) : (
             <div className='form-container'>
             <div className='accountcont'>
             <h4>Profile Page</h4>
@@ -89,7 +103,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update First Name" 
                  onChange={(e) => setFirstName(e.target.value)}></input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -97,7 +111,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update Last Name" onChange={(e) => setLastName(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -105,7 +119,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="email" placeholder="Update Email" onChange={(e) => setEmail(e.target.value)}> 
                 </input>
-            <button type="submit" onClick={handleSubmit}>Update</button>
+            <button type="submit" onClick={handleProfileUpdate}>Update</button>
    
    </div>         </div>
             <div className='accountinfo'>
@@ -113,7 +127,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="date" id='date' onChange={(e) => setDateOfBirth(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -121,7 +135,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update Gender" onChange={(e) => setGender(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -129,18 +143,18 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update Password" onChange={(e) => setPassword(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='userbuttons'>
-                <button id='deleteaccount'type="button" onClick={handleDelete}>Delete Profile</button>
+                <Link to="/" class="home"><button id='deleteaccount'type="button" onClick={handleDelete}>Delete Profile</button></Link>
                 <button id='logout' type='button' onClick={handleLogout}>Logout</button>
+                <button id="userReports" onClick={showUserReports}>My Reports</button>
             </div>
             </div>
-           
-                <img src={city} alt="City" />
-            
+                <img src={city} alt="City"/>
         </div>
+            )}
         </div>
     )
 }
