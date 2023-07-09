@@ -6,26 +6,31 @@ import { AuthContext } from '../context/AuthProvider'
 
 const UserReports = () => {
     const { loggedIn, user } = useContext(AuthContext)
+    const  id  = user._id
     let navigate = useNavigate()
     const [userReports, setUserReports] = useState([])
 
     useEffect(() => {
-        try {
         const getUserReports = async () => {
-            const response = await axios.get(`https://walksafenyc-api-production.up.railway.app/api/posts/getPostsByUser/${user._id}`)
+        try {
+            const response = await axios.get(`https://walksafenyc-api-production.up.railway.app/api/posts/getPostsByUser/${id}`)
+            console.log(response.data)
             setUserReports(response.data)
-        }
+            console.log(userReports)
         } catch (error) {
             console.error('Error fetching user reports:', error);
         }
-        getUserReports()
+        }
+        getUserReports();
+    }, [])
+
+    useEffect(() => {
+        console.log(userReports)
     }, [userReports])
 
-    
 
-    //const showUserReport = (id) => {
-        //navigate(`${id}/`)
-    //}
+   
+
 
     return (
         <div className='allReportsPage'>
@@ -33,7 +38,7 @@ const UserReports = () => {
         <section className="report-grid">
             {
                 userReports.map((userReport) => (
-                    <section key={userReport._id} onClick={()=>showUserReport(userReport._id)} className="userReports">
+                    <section className="userReports">
                             <p>Date of Incident: {userReport.post_date}</p>
                             <p>Time of Incident: {userReport.post_time}</p>
                             <p>Type of harassment: {userReport.incident_type}</p>

@@ -3,18 +3,20 @@ import React, { useState, useContext, useEffect } from 'react'
 import city from '../assets/city.png'
 import { AuthContext } from '../context/AuthProvider'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const UserPage = () => {
-    const { id } = useParams()
 
     const { loggedIn, user, logout } = useContext(AuthContext)
 
     let navigate = useNavigate()
 
-    if (!loggedIn || !user) {
-        return null
-    }
+
+
+    const id = user._id 
+
+
 
 
 
@@ -37,6 +39,7 @@ const UserPage = () => {
     const [password, setPassword] = useState(user.password)
     const [dateOfBirth, setDateOfBirth] = useState(user.date_of_birth)
     const [gender, setGender] = useState(user.gender)
+    const [success, setSuccess] = useState(false)
 
     const handleProfileUpdate = async () => {
         try {
@@ -51,13 +54,14 @@ const UserPage = () => {
           } )
 
     } catch (error) {
-        console.error('Error updateing user', error)
+        console.error('Error updating user', error)
     }}
  
 
     const handleDelete = async () => {
         try { 
             await axios.delete(`https://walksafenyc-api-production.up.railway.app/api/users/${id}`,)
+            logout(user)
         } catch (error) {
             console.error('Error deleting user', error)
         }
@@ -72,15 +76,27 @@ const UserPage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('user'); // Clear user from local storage
-        logout(); // Clear user from context
+        logout(user); // Clear user from context
         setSelectedUser(null);
-        navigate(`/login?id=${selectedUser._id}`); // Navigate to login page with user ID as query parameter
       };
+
+    
+    const showUserReports = () => {
+        navigate(`userReports/${id}/`)
+    }
 
 
 
     return (
         <div className="userPage">
+            {success ? (
+                <section>
+                    <h1>Account successfully deleted.</h1>
+                    <p>
+                    <Link className="home" to="/"><button id="already-have-account">Go home.</button></Link> 
+                    </p>
+                </section>
+            ) : (
             <div className='form-container'>
             <div className='accountcont'>
             <h4>Profile Page</h4>
@@ -133,14 +149,14 @@ const UserPage = () => {
                 </div>
             </div>
             <div className='userbuttons'>
-                <button id='deleteaccount'type="button" onClick={handleDelete}>Delete Profile</button>
-                <button id='logout' type='button' onClick={handleLogout}>Logout</button>
+                <Link className="deleteAccount" to="/"><button id='deleteaccount'type="button" onClick={handleDelete}>Delete Profile</button></Link>
+                <Link className="login" to="/login"><button id='logout' type='button' onClick={handleLogout}>Logout</button></Link>
+                <button id="userReports" onClick={showUserReports}>My Reports</button>
             </div>
             </div>
-           
-                <img src={city} alt="City" />
-            
+                <img src={city} alt="City"/>
         </div>
+            )}
         </div>
     )
 }

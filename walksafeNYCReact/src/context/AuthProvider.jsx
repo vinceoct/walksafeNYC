@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
         setUser(userData)
     }
 
-    const logout = () => {
+    const logout = (userData) => {
         setLoggedIn(false)
         setUser(null)
     }

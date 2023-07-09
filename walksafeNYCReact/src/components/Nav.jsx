@@ -16,13 +16,13 @@ const Nav = () => {
         </div>
     )
     } else {
+        const id = user._id
         return (
             <div className="nav-links">
                 <Link className="nav" to="/">Home</Link>
                 <Link className="nav" to="/reportForm">Submit a Report</Link>
-                <Link className="nav" to="/login/:id">Account</Link>
+                <Link className="nav" to={`login/${id}`}>Account</Link>
                 <Link className="nav" to="/reports">View all reports</Link>
-                <Link className="nav" to="/userReports/:id">My reports</Link>
             </div>
         )
     }
