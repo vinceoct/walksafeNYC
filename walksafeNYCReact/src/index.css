@@ -404,7 +404,7 @@ color: #e6e6e6;
   width: 100%
 }
 
-.createAccount, .login{
+.login{
   width: 85%;
   padding: 0px;
   margin-top: 4px
@@ -502,4 +502,7 @@ color: #e6e6e6;
   margin-top: -20px;
   margin-bottom: -17px
 }
+
+
+
 
