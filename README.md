@@ -1,6 +1,6 @@
 # Walk Safe NYC
 <p align=center>
-<img src='https://github.com/vinceoct/walksafeNYC/blob/main/walksafeNYCReact/src/assets/walksafehome.png' width=200/></p>p
+<img src='https://github.com/vinceoct/walksafeNYC/blob/main/walksafeNYCReact/src/assets/walksafehome.png' width=200/></p>
 This is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. The app allows users to report incidents of street harassment in New York City (NYC) by entering an address or using their current location. Users can create an account, log in, view their submitted reports, and update the comments they left in their reports. The app utilizes the Mapbox, Mapbox Geocoder, and Geolocation APIs for mapping and location services.
 
 ## Features
