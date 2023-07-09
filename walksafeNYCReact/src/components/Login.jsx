@@ -44,7 +44,7 @@ const Login = () => {
   const fetchOneUser = async () => {
     try {
       const response = await axios.get(
-        'https://walksafenyc-api-production.up.railway.app/api/users'
+        'https://walksafenyc-api-production-ba84.up.railway.app/api/users'
       );
       setUsers(response.data);
     } catch (error) {

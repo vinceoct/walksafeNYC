@@ -23,7 +23,7 @@ const UserPage = () => {
     useEffect(()=> {
         const getProfilePage = async () => {
             try {
-                const response = await axios.get(`https://walksafenyc-api-production.up.railway.app/api/users/${id}`)
+                const response = await axios.get(`https://walksafenyc-api-production-ba84.up.railway.app/api/users/${id}`)
                 const data = response.data
                 console.log(data)
             } catch (error) {
@@ -43,7 +43,7 @@ const UserPage = () => {
 
     const handleProfileUpdate = async () => {
         try {
-           const response = await axios.put(`https://walksafenyc-api-production.up.railway.app/api/users/${id}`,
+           const response = await axios.put(`https://walksafenyc-api-production-ba84.up.railway.app/api/users/${id}`,
            {
             first_name: firstName,
             last_name: lastName,
@@ -61,7 +61,7 @@ const UserPage = () => {
 
     const handleDelete = async () => {
         try { 
-            await axios.delete(`https://walksafenyc-api-production.up.railway.app/api/users/${id}`,)
+            await axios.delete(`https://walksafenyc-api-production-ba84.up.railway.app/api/users/${id}`,)
             setSuccess(true)
             handleLogout()
         } catch (error) {

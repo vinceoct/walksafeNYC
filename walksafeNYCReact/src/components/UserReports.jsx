@@ -16,7 +16,7 @@ const UserReports = () => {
     useEffect(() => {
         const getUserReports = async () => {
         try {
-            const response = await axios.get(`https://walksafenyc-api-production.up.railway.app/api/posts/getPostsByUser/${id}`)
+            const response = await axios.get(`https://walksafenyc-api-production-ba84.up.railway.app/api/posts/getPostsByUser/${id}`)
             console.log(response.data)
             setUserReports(response.data)
             console.log(userReports)
@@ -34,7 +34,7 @@ const UserReports = () => {
 
     const handleDelete = async (index) => {
         try { 
-            await axios.delete(`https://walksafenyc-api-production.up.railway.app/api/posts/${userReports[index]._id}`,)
+            await axios.delete(`https://walksafenyc-api-production-ba84.up.railway.app/api/posts/${userReports[index]._id}`,)
             setSuccess(true)
         } catch (error) {
             console.error('Error deleting report', error)
@@ -43,7 +43,7 @@ const UserReports = () => {
 
     const handleCommentUpdate = async (index) => {
         try {
-           const response = await axios.put(`https://walksafenyc-api-production.up.railway.app/api/posts/${userReports[index]._id}`,
+           const response = await axios.put(`https://walksafenyc-api-production-ba84.up.railway.app/api/posts/${userReports[index]._id}`,
            {
             comment: comment
           } )
