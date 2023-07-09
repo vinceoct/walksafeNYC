@@ -52,6 +52,7 @@ const UserPage = () => {
             date_of_birth: dateOfBirth,
             gender: gender 
           } )
+          setSuccess(true)
 
     } catch (error) {
         console.error('Error updating user', error)
@@ -61,18 +62,15 @@ const UserPage = () => {
     const handleDelete = async () => {
         try { 
             await axios.delete(`https://walksafenyc-api-production.up.railway.app/api/users/${id}`,)
-            logout(user)
+            setSuccess(true)
+            handleLogout()
         } catch (error) {
             console.error('Error deleting user', error)
         }
     }
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(email)
-       handleProfileUpdate()
-    }
+  
 
     const handleLogout = () => {
         localStorage.removeItem('user'); // Clear user from local storage
@@ -89,11 +87,11 @@ const UserPage = () => {
 
     return (
         <div className="userPage">
-            {success ? (
+           {success ? (
                 <section>
-                    <h1>Account successfully deleted.</h1>
+                    <h4>Changes saved successfully.</h4>
                     <p>
-                    <Link className="home" to="/"><button id="already-have-account">Go home.</button></Link> 
+                    <Link className="home" to="/"><button id="already-have-account" className="submit-button">Go home.</button></Link> 
                     </p>
                 </section>
             ) : (
@@ -105,7 +103,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update First Name" 
                  onChange={(e) => setFirstName(e.target.value)}></input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -113,7 +111,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update Last Name" onChange={(e) => setLastName(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -121,7 +119,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="email" placeholder="Update Email" onChange={(e) => setEmail(e.target.value)}> 
                 </input>
-            <button type="submit" onClick={handleSubmit}>Update</button>
+            <button type="submit" onClick={handleProfileUpdate}>Update</button>
    
    </div>         </div>
             <div className='accountinfo'>
@@ -129,7 +127,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="date" id='date' onChange={(e) => setDateOfBirth(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -137,7 +135,7 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update Gender" onChange={(e) => setGender(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='accountinfo'>
@@ -145,12 +143,12 @@ const UserPage = () => {
                 <div className='userupdate'>
                 <input type="text" placeholder="Update Password" onChange={(e) => setPassword(e.target.value)}>
                 </input>
-                <button type="submit" onClick={handleSubmit}>Update</button>
+                <button type="submit" onClick={handleProfileUpdate}>Update</button>
                 </div>
             </div>
             <div className='userbuttons'>
-                <Link className="deleteAccount" to="/"><button id='deleteaccount'type="button" onClick={handleDelete}>Delete Profile</button></Link>
-                <Link className="login" to="/login"><button id='logout' type='button' onClick={handleLogout}>Logout</button></Link>
+                <Link to="/" class="home"><button id='deleteaccount'type="button" onClick={handleDelete}>Delete Profile</button></Link>
+                <button id='logout' type='button' onClick={handleLogout}>Logout</button>
                 <button id="userReports" onClick={showUserReports}>My Reports</button>
             </div>
             </div>

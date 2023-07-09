@@ -1,7 +1,6 @@
-
+import React, { useState, useEffect, useContext } from 'react';
 import city from '../assets/city.png';
 import axios from 'axios';
-import React, { useEffect, useContext, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
@@ -13,7 +12,7 @@ const initialState = {
 };
 
 const Login = () => {
-  const { login, logout, loggedIn, user} = useContext(AuthContext);
+  const { login, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -80,16 +79,15 @@ const Login = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user'); // Clear user from local storage
-    logout(user); // Clear user from context
+    logout(); // Clear user from context
     setSelectedUser(null);
-    navigate(`/login`); // Navigate to login page with user ID as query parameter
+    navigate(`/login?id=${selectedUser._id}`); // Navigate to login page with user ID as query parameter
   };
 
-  
-
   const showProfile = () => {
-      const id = user._id
-      navigate(`${id}/`);
+    if (selectedUser) {
+      navigate(`${selectedUser._id}/`);
+    }
   };
 
   return (
@@ -123,9 +121,9 @@ const Login = () => {
             Log in
           </button>
           {formState.valid && <p>{formState.valid}</p>}
-          {loggedIn ? (
+          {selectedUser ? (
             <>
-              <button onClick={showProfile(user._id)}>Go to profile page</button>
+              <button onClick={showProfile}>Go to profile page</button>
               <button onClick={handleLogout}>Logout</button>
             </>
           ) : (
