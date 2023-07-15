@@ -20,7 +20,7 @@ const ReportForm = () => {
     }
 
     const [date, setDate] = useState('')
-    const [time, setTime] = useState('')
+    const [time, setTime] = useState('12:00 AM')
     const [incidentType, setIncidentType] = useState('Verbal harassment')
     const [comment, setComment] = useState('')
     const [longitude, setLongitude] = useState('')
@@ -32,7 +32,6 @@ const ReportForm = () => {
     
 
 
-    // pulls location data from user device when use current location button is clicked. 
     const handleGeolocation = (e) => {
         e.preventDefault()
         if (navigator.geolocation) {
@@ -89,11 +88,15 @@ const ReportForm = () => {
 
         const handleSubmit = (e) => {
             e.preventDefault()
-            setSuccess(true)
-            if (address != '') {
+            if (date === '') {
+            alert('Please select Date.')
+            return}       
+            else if (address != '') {
             geocode(address)
+            setSuccess(true)
             } else if (latitude != '' && address === ''){
             newReport(latitude, longitude)
+            setSuccess(true)
             }
         }
         
@@ -240,6 +243,7 @@ const ReportForm = () => {
                     <textarea id='address' onChange={(e)=>setAddress(e.target.value)} placeholder='Enter address'></textarea>
                 </div>
                 </div>
+
                  <button className="submit-button" type="submit">Submit Report</button>
                 
             </form>

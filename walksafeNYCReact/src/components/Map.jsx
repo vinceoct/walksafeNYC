@@ -4,8 +4,6 @@ import heatmap from 'heatmap.js'
 import React, { useEffect, useRef } from 'react'
 import axios from 'axios'
 
-// make an axios call that maps all the lat,lon from posts 
-// push the numbers 
 const Map =() => {   
     const mapContainerRef = useRef(null)
     useEffect(() => { 
